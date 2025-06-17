@@ -67,7 +67,7 @@ async function switchCamera() {
     }
 }
 
-// Setup canvas
+// setup canvas for animasi background
 function setupCanvas() {
     canvas = document.getElementById("background-canvas");
     if (!canvas) {
@@ -202,13 +202,13 @@ async function stopWebcam() {
     if (webcamContainer) webcamContainer.innerHTML = "";
 }
 
-// Update text status
+// Update text status (stopped, swtiching, running, etc)
 function updateStatus(message) {
     document.getElementById("status-text").textContent = message;
     console.log("Status:", message);
 }
 
-// Init model and camera
+// Init modeln dan cameranya
 async function init() {
     if (!window.tmImage) {
         throw new Error("Teachable Machine library not loaded.");
@@ -238,7 +238,7 @@ async function initCamera() {
     webcamContainer.appendChild(webcam.canvas);
 }
 
-// Setup labels
+// label2 prediksi
 function setupLabelContainer() {
     labelContainer = document.getElementById("label-container");
     labelContainer.innerHTML = "";
