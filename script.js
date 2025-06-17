@@ -208,7 +208,7 @@ function updateStatus(message) {
     console.log("Status:", message);
 }
 
-// Init modeln dan cameranya
+// Init model dan cameranya
 async function init() {
     if (!window.tmImage) {
         throw new Error("Teachable Machine library not loaded.");
@@ -224,7 +224,7 @@ async function init() {
 
 // Initialize webcam
 async function initCamera() {
-    const flip = false;
+    const flip = true;
     const size = 300;
     webcam = new window.tmImage.Webcam(size, size, flip);
     const deviceId = videoDevices[currentDeviceIndex]?.deviceId;
