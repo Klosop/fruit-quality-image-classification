@@ -1,4 +1,4 @@
-// Model URLs
+// letak model
 const MODEL_PATHS = {
     apple: {
         url: "models/apple_model/",
@@ -10,7 +10,7 @@ const MODEL_PATHS = {
     }
 };
 //
-// Global variables
+// Variabel global
 let model, webcam, labelContainer, maxPredictions;
 let isRunning = false;
 let currentModel = "apple";
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     await checkAvailableCameras();
 });
 
-// Check for available cameras
+// check for semua kamera yang siap
 async function checkAvailableCameras() {
     try {
         if (!navigator.mediaDevices?.enumerateDevices) {
@@ -88,7 +88,7 @@ function resizeCanvas() {
     canvas.height = window.innerHeight;
 }
 
-// Create particles
+// buat partikel background
 function createParticles(type) {
     particles = [];
     const count = 20;
@@ -106,7 +106,7 @@ function createParticles(type) {
     }
 }
 
-// Animate particles
+// animasi partikel background
 function animateParticles() {
     if (!ctx || !canvas) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -126,7 +126,7 @@ function animateParticles() {
     animationId = requestAnimationFrame(animateParticles);
 }
 
-// Draw functions
+// pola bulat background
 function drawFruit(ctx, x, y, size, type) {
     ctx.fillStyle = type === "apple" ? "#e74c3c" : "#e67e22";
     ctx.beginPath();
@@ -143,7 +143,7 @@ function drawLeaf(ctx, x, y, size, type) {
     ctx.fill();
 }
 
-// Switch model
+// ubah model
 function switchModel(modelType) {
     if (isRunning) stopDetection();
     currentModel = modelType;
@@ -155,7 +155,7 @@ function switchModel(modelType) {
     updateStatus(`Switched to ${MODEL_PATHS[modelType].name}`);
 }
 
-// Toggle Detection
+// Toggle on/off
 function toggleDetection() {
     if (isRunning) {
         stopDetection();
@@ -192,7 +192,7 @@ async function stopDetection() {
     updateStatus("Stopped");
 }
 
-// Stop webcam safely
+// Stop webcam
 async function stopWebcam() {
     if (webcam) {
         await webcam.stop();
@@ -202,7 +202,7 @@ async function stopWebcam() {
     if (webcamContainer) webcamContainer.innerHTML = "";
 }
 
-// Update status
+// Update text status
 function updateStatus(message) {
     document.getElementById("status-text").textContent = message;
     console.log("Status:", message);
@@ -253,7 +253,7 @@ function setupLabelContainer() {
     }
 }
 
-// Prediction loop
+// loop prediksi
 async function loop() {
     if (!isRunning) return;
     webcam.update();
@@ -261,7 +261,7 @@ async function loop() {
     window.requestAnimationFrame(loop);
 }
 
-// Predict
+// fungsi prediksi
 async function predict() {
     const prediction = await model.predict(webcam.canvas);
     for (let i = 0; i < maxPredictions; i++) {
